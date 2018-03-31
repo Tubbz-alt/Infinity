@@ -40,7 +40,7 @@ mysql_close($e);
   <script src="js/jquery.min.js"></script>
   <script src="js/underscore-min.js"></script>
 
-  <? if(!bLocal){ ?> 
+   
   <script>
     
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -52,7 +52,7 @@ mysql_close($e);
   ga('send', 'pageview');
 
   </script>
-  <? } ?>
+
   <style type="text/css">
    body{
     color: green;
@@ -106,9 +106,20 @@ mysql_close($e);
      }
       #center-screen{
       position: fixed;
-      top: 50%;
-      margin-left: 50%;
-      transform: translateX(-50%);
+      top: 50%;/*
+      left: 0;
+      right: 0;
+      width: 50%;*/
+      left: 50%;
+      overflow: hidden;
+      white-space: nowrap;
+      /*width: 100%; */
+       /*text-align:center;*/
+    /*transform: translate(-50%, 0);*/
+      /*margin-left: 50%;*/
+     transform: translateX(-50%);
+     margin: 0 auto;
+
       /*right: 0px; */
       /* float: left; */
       /*font-size: 26px;*/
@@ -418,7 +429,10 @@ copyTextareaBtn.addEventListener('click', function(event) {
     <option value="15">15</option>
     <option value="16">16</option>
 </select>
-<input  type="button" value="?" onclick="alert('Infinity:A evolution of Speed-reading Apps\nLicence: GNU General Public License v3.0\nSource: https://github.com/vernetit/Infinity\ncontact: robertchalean@gmail.com');">
+zoom 
+<input type="button" value="-" onclick="/*myZoom-=0.1; $('#center-screen').css('zoom',''+myZoom);*/ fontSize-=5; /*$('#center-screen').css('font-size',''+myFontSize+'px');*/">
+<input type="button" value="+" onclick="/*myZoom+=0.1; $('#center-screen').css('zoom',''+myZoom);*/  fontSize+=5; /*$('#center-screen').css('font-size',''+myFontSize+'px !important');*/">
+<input  type="button" value="?" onclick="alert('Infinity:A evolution of Speed-reading Apps\nBased on the Shapes and colors Speed-Memory System\nLicence: GNU General Public License v3.0\nSource: https://github.com/vernetit/Infinity\ncontact: robertchalean@gmail.com');">
  <span id="stats" style="font-size: 12px;"></span>
 </div>
 <div id="preload" style="display:none;">
@@ -427,6 +441,9 @@ copyTextareaBtn.addEventListener('click', function(event) {
 </div>
 
 <script type="text/javascript">
+
+myZoom=1;
+myFontSize=30;
 
 bOcultar=0;
 bLoop=0;
@@ -1012,10 +1029,10 @@ function init(x){
 
   //console.log(readingMode);
 
-  fontSize=30;
+  /*fontSize=30;
 
   if(wordsByFlash>4)
-    fontSize=24;
+    fontSize=24;*/
 
   transform="";
 
@@ -1527,7 +1544,8 @@ if(_ww<=1000){
 
   // $("#control").css("height","100px;")
   $("#control").css("zoom","3")
-  $("#center-screen").css("zoom","3")
+  /*$("#center-screen").css("zoom","3")*/
+  fontSize=80;
   // $("#center-screen").css("margin-bottom","100px;")
   $("#control").css("z-index","1000")
 }
