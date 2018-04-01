@@ -151,15 +151,25 @@ mysql_close($e);
       right: 0px; 
       bottom: 0px;
      }
+
+     .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+      }
   </style>
 </head>
 <body>
-<div id="screen" onclick="if(posicion-12>=0){ posicion-=12;  }else{ posicion=0; }">
+<div id="screen" onclick="if(posicion-12>=0){ contadorPalabras=0; posicion-=15;  }else{ posicion=0; }">
   <div id="left-up-screen"></div>
   <div id="right-up-screen"></div>
   <div id="up-screen">:)</div>
   <div id="left-screen">Infinity</div>
-  <div id="center-screen"></div>
+  <div id="center-screen" class="noselect"></div>
   <div id="right-screen">Infinity</div>
   <div id="down-screen">:)</div>
   <div id="left-down-screen"></div>
@@ -752,32 +762,32 @@ function init(x){
   my_word=mostrar;
 
   if(wordsByFlash==2){
-    mostrar = cadena[posicion] + " " + cadena[posicion+1] ;
+    mostrar = cadena[posicion] + "&nbsp;" + cadena[posicion+1] ;
 
   }
 
   if(wordsByFlash==3){
-    mostrar = cadena[posicion] + " " + cadena[posicion+1] + " " + cadena[posicion+2] ;
+    mostrar = cadena[posicion] + "&nbsp;" + cadena[posicion+1] + "&nbsp;" + cadena[posicion+2] ;
 
   }
 
   if(wordsByFlash==4){
-    mostrar = cadena[posicion] + " " + cadena[posicion+1] + " " + cadena[posicion+2] + " " + cadena[posicion+3] ;
+    mostrar = cadena[posicion] + "&nbsp;" + cadena[posicion+1] + "&nbsp;" + cadena[posicion+2] + "&nbsp;" + cadena[posicion+3] ;
 
   }
   
   if(wordsByFlash==5){
-    mostrar = cadena[posicion] + " " + cadena[posicion+1] + " " + cadena[posicion+2] + " " + cadena[posicion+3] + " " + cadena[posicion+4];
+    mostrar = cadena[posicion] + "&nbsp;" + cadena[posicion+1] + "&nbsp;" + cadena[posicion+2] + "&nbsp;" + cadena[posicion+3] + "&nbsp;" + cadena[posicion+4];
 
   }
 
   if(wordsByFlash==6){
-    mostrar = cadena[posicion] + " " + cadena[posicion+1] + " " + cadena[posicion+2] + " " + cadena[posicion+3] + " " + cadena[posicion+4] + " " + cadena[posicion+5];
+    mostrar = cadena[posicion] + "&nbsp;" + cadena[posicion+1] + "&nbsp;" + cadena[posicion+2] + "&nbsp;" + cadena[posicion+3] + "&nbsp;" + cadena[posicion+4] + "&nbsp;" + cadena[posicion+5];
 
   }
 
   if(wordsByFlash==7){
-    mostrar = cadena[posicion] + " " + cadena[posicion+1] + " " + cadena[posicion+2] + " " + cadena[posicion+3] + " " + cadena[posicion+4] + " " + cadena[posicion+5] + " " + cadena[posicion+6];
+    mostrar = cadena[posicion] + "&nbsp;" + cadena[posicion+1] + "&nbsp;" + cadena[posicion+2] + "&nbsp;" + cadena[posicion+3] + "&nbsp;" + cadena[posicion+4] + "&nbsp;" + cadena[posicion+5] + "&nbsp;" + cadena[posicion+6];
 
   }
   //console.log(cadena);
