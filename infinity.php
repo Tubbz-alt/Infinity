@@ -1130,14 +1130,20 @@ function init(x){
       killIntervalRc=setInterval(function(){
 
         poneme="";
+
+        mostrar = mostrar.split("&nbsp;").join(" ");
+
         for(i=0;i<mostrar.length;i++){
 
           
 
           if(mostrar[i]==" "){
+
             poneme += `<span style="color: black;">&nbsp;</span>`;
 
           }else{
+
+
             poneme += `${emo}<span style="color: ${random_color('rgb')}; text-shadow: 1px 1px ${random_color('rgb')}; font-size: ${fontSize}px;">${mostrar[i]}</span>`;
 
           }
@@ -1145,6 +1151,12 @@ function init(x){
           
         }
 
+        console.log(poneme)
+
+
+
+        
+        
         $("#"+lugar).html(`<div style="${transform}">`+poneme+"</div>");
 
 
@@ -1152,6 +1164,9 @@ function init(x){
 
     }else{
       poneme="";
+
+      mostrar = mostrar.split("&nbsp;").join(" ");
+
       for(i=0;i<mostrar.length;i++){
 
         if(mostrar[i]==" "){
