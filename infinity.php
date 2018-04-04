@@ -440,6 +440,16 @@ copyTextareaBtn.addEventListener('click', function(event) {
     <option value="14">14</option>
     <option value="15">15</option>
     <option value="16">16</option>
+    <option value="17">17</option>
+</select>
+<select id="working-memory" style="/*width: 75px;*/" onchange="/*calcularTiempo();*/">   
+    <option value="0">not</option>
+    <option value="1">1s</option>
+    <option value="2">2s</option>
+    <option value="3">3s</option>
+    <option value="4">4s</option>
+    <option value="5">5s</option>
+    <option value="6">6s</option>
 </select>
 zoom 
 <input type="button" value="-" onclick="/*myZoom-=0.1; $('#center-screen').css('zoom',''+myZoom);*/ fontSize-=5; /*$('#center-screen').css('font-size',''+myFontSize+'px');*/">
@@ -1331,7 +1341,15 @@ function init(x){
 
     $("#current-vel").html(parseInt(_n));
 
-  if( (word_length>=3 && my_word.search("-")==-1) || wordsByFlash>1 ) contadorPalabras++; 
+  plus=0;
+
+  if(contadorPalabras==n("my-limit")-1){
+    plus = n("working-memory") * 1000 - ( ( 60000/ velocity ) * wordsByFlash  );
+    setTimeout(function(){ $("#center-screen").html(""); },  ( 60000/ velocity ) * wordsByFlash  );
+
+  }
+
+  if( ( word_length>=3 && my_word.search("-")==-1 ) || wordsByFlash>1 || (n("working-memory")>0 && contadorPalabras==n("my-limit")-1 ) ) contadorPalabras++; 
 
 
   if(myExperiment==2){
@@ -1339,10 +1357,9 @@ function init(x){
       velocity=250;
       console.log("retardo")
     }
-  }
+  } 
 
-
-  killInterval=setTimeout(function(){ init() },  ( 60000/ velocity ) * wordsByFlash   );
+  killInterval=setTimeout(function(){ init() },  ( 60000/ velocity ) * wordsByFlash + plus  );
 
   calcularTiempo();
 
