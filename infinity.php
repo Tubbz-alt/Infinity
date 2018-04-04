@@ -31,6 +31,7 @@ mysql_close($e);
 <html>
 <head>
     <meta charset="UTF-8">
+  
 
   <title>Infinity</title>
   <!--
@@ -75,10 +76,11 @@ mysql_close($e);
 
     }
      #up-screen{
-      margin-left: 50%;
+     
       position: fixed;
       top: 30px;
       transform: translateX(-50%);
+      margin-left: 50%;
      }
      #down-screen{
       margin-left: 50%;
@@ -164,7 +166,7 @@ mysql_close($e);
   </style>
 </head>
 <body>
-<div id="screen" onclick="if(posicion-12>=0){ contadorPalabras=0; posicion-=15;  }else{ posicion=0; }">
+<div id="screen" onclick="if(posicion-15>=0){ contadorPalabras=0; posicion-=15;  }else{ posicion=0; }">
   <div id="left-up-screen"></div>
   <div id="right-up-screen"></div>
   <div id="up-screen">:)</div>
@@ -433,8 +435,8 @@ copyTextareaBtn.addEventListener('click', function(event) {
 <select id="my-limit" style="/*width: 75px;*/" onchange="/*calcularTiempo();*/">   
     <option value="10">10</option>
     <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13" selected>13</option>
+    <option value="12"  selected>12</option>
+    <option value="13">13</option>
     <option value="14">14</option>
     <option value="15">15</option>
     <option value="16">16</option>
@@ -1553,11 +1555,13 @@ if(_ww<=1000){
 
 
   // $("#control").css("height","100px;")
-  $("#control").css("zoom","3")
+  $("#control").css("zoom","3.1")
   /*$("#center-screen").css("zoom","3")*/
   fontSize=80;
   // $("#center-screen").css("margin-bottom","100px;")
   $("#control").css("z-index","1000")
+  $("#screen").css("height","2000px")
+
 }
 
 $("#velocityFlash").val("200");
