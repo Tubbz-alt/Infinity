@@ -166,7 +166,7 @@ mysql_close($e);
   </style>
 </head>
 <body>
-<div id="screen" onclick="if(posicion-15>=0){ contadorPalabras=0; posicion-=15;  }else{ posicion=0; }">
+<div id="screen" onclick="console.log('toco'); if(posicion-15>=0){ contadorPalabras=0; posicion-=15;  }else{ posicion=0; }">
   <div id="left-up-screen"></div>
   <div id="right-up-screen"></div>
   <div id="up-screen">:)</div>
@@ -443,7 +443,7 @@ copyTextareaBtn.addEventListener('click', function(event) {
     <option value="17">17</option>
 </select>
 <select id="working-memory" style="/*width: 75px;*/" onchange="/*calcularTiempo();*/">   
-    <option value="0">not</option>
+    <option value="0" selected>not</option>
     <option value="1">1s</option>
     <option value="2">2s</option>
     <option value="3">3s</option>
@@ -1172,7 +1172,7 @@ function init(x){
 
       },10);
 
-    }else{
+    }else{ //if random colors
       poneme="";
 
       mostrar = mostrar.split("&nbsp;").join(" ");
@@ -1195,7 +1195,7 @@ function init(x){
 
     }
 
-  }else{
+  }else{ //colors
     if(myExperiment==4 || myExperiment==5 || myExperiment==6 || myExperiment==7){
 
 
@@ -1288,8 +1288,6 @@ function init(x){
 
     // console.log("hola: "+ "posicion:"+ posicion + " repeatQ "  + repeatQ);
 
-
-
     repeatCount++;
 
     if(repeatQ!=1){
@@ -1343,10 +1341,12 @@ function init(x){
 
   plus=0;
 
-  if(contadorPalabras==n("my-limit")-1){
+  if(contadorPalabras==n("my-limit")-1 && n("working-memory")!=0){
+    
     plus = n("working-memory") * 1000 - ( ( 60000/ velocity ) * wordsByFlash  );
     setTimeout(function(){ $("#center-screen").html(""); },  ( 60000/ velocity ) * wordsByFlash  );
 
+    
   }
 
   if( ( word_length>=3 && my_word.search("-")==-1 ) || wordsByFlash>1 || (n("working-memory")>0 && contadorPalabras==n("my-limit")-1 ) ) contadorPalabras++; 
