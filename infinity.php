@@ -444,7 +444,9 @@ copyTextareaBtn.addEventListener('click', function(event) {
 </select>
 <select id="working-memory" style="/*width: 75px;*/" onchange="/*calcularTiempo();*/">   
     <option value="0" selected>not</option>
+    <option value="0.5">0.5</option>
     <option value="1">1s</option>
+    <option value="1.5">1.5s</option>
     <option value="2">2s</option>
     <option value="3">3s</option>
     <option value="4">4s</option>
@@ -464,6 +466,7 @@ zoom
 
 <script type="text/javascript">
 
+bMostrarRndColor=1;
 myZoom=1;
 myFontSize=30;
 
@@ -1135,9 +1138,12 @@ function init(x){
 
     if(bRc){
 
+      bMostrarRndColor=1;
       
 
       killIntervalRc=setInterval(function(){
+
+        if(!bMostrarRndColor) return;
 
         poneme="";
 
@@ -1344,7 +1350,7 @@ function init(x){
   if(contadorPalabras==n("my-limit")-1 && n("working-memory")!=0){
     
     plus = n("working-memory") * 1000 - ( ( 60000/ velocity ) * wordsByFlash  );
-    setTimeout(function(){ $("#center-screen").html(""); },  ( 60000/ velocity ) * wordsByFlash  );
+    setTimeout(function(){ bMostrarRndColor=0; $("#center-screen").html(""); },  ( 60000/ velocity ) * wordsByFlash  );
 
     
   }
