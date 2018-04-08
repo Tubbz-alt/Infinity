@@ -400,8 +400,6 @@ Harry atravesó a oscuras la habitación, pasando junto a la gran jaula vacía d
      loop
      <input type="checkbox" onclick="bLoop=!bLoop;">
    </span>
-
-
    <span style="display:none;">
    <input type="checkbox" onclick="bOcultar=!bOcultar;">
 
@@ -433,9 +431,14 @@ copyTextareaBtn.addEventListener('click', function(event) {
 
 
 <select id="my-limit" style="/*width: 75px;*/" onchange="/*calcularTiempo();*/">   
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
     <option value="10">10</option>
     <option value="11">11</option>
-    <option value="12"  selected>12</option>
+    <option value="12" selected>12</option>
     <option value="13">13</option>
     <option value="14">14</option>
     <option value="15">15</option>
@@ -453,6 +456,13 @@ copyTextareaBtn.addEventListener('click', function(event) {
     <option value="5">5s</option>
     <option value="6">6s</option>
 </select>
+<select id="tricky">
+    <option value="0" selected>no tricky</option>
+    <option value="12">12%</option>
+    <option value="25">25%</option>
+    <option value="37">37%</option>
+    <option value="50">50%</option>
+</select>
 zoom 
 <input type="button" value="-" onclick="/*myZoom-=0.1; $('#center-screen').css('zoom',''+myZoom);*/ fontSize-=5; /*$('#center-screen').css('font-size',''+myFontSize+'px');*/">
 <input type="button" value="+" onclick="/*myZoom+=0.1; $('#center-screen').css('zoom',''+myZoom);*/  fontSize+=5; /*$('#center-screen').css('font-size',''+myFontSize+'px !important');*/">
@@ -466,6 +476,7 @@ zoom
 
 <script type="text/javascript">
 
+bPalabrasLargasColor=0;
 bMostrarRndColor=1;
 myZoom=1;
 myFontSize=30;
@@ -598,6 +609,8 @@ tiempo = 0;
 lugar = "";
 mostrar="";
 
+nexTricky=0; maxTricky=0;
+
 var killIntervalRc;
 
 function calcularTiempo(){
@@ -624,6 +637,8 @@ function init(x){
     cantidadPalabras = 0;
     repeatWW=n("repeat-w");
     myDb=n("database");
+
+    maxTricky=0; nexTricky=0;
 
     str = $("#input1").val();
 
@@ -1258,7 +1273,11 @@ function init(x){
         
       }
 
+      $("#center-screen").css("color",currentColor)
+
       $("#"+lugar).html(`<div style="${transform}">${ocul}<span style="font-size: ${fontSize}px;">`+mostrar+`</span></div>`);
+
+      if(bPalabrasLargasColor && word_length>=10 && wordsByFlash==1) $("#center-screen").css("color","#1fef6b")
 
       if(myExperiment==3){
         $(".t-e").css("color","black");
@@ -1287,8 +1306,19 @@ function init(x){
 
   }
   
+  //tricky experiment :)
+  if(_.random(1,100)<=n("tricky") && posicion-2>=0 && nexTricky==0 || ( word_length>=8 && posicion-2>=0 && nexTricky==0 ) ){
+    nexTricky=0;
+    //if(word_length>=8)
+    if(_.random(0,1)){ maxTricky=2; posicion-=wordsByFlash; }else{ maxTricky=3; posicion-=wordsByFlash*2; }
+  }else{
 
-  posicion+=wordsByFlash;
+    posicion+=wordsByFlash;
+  }
+
+  if(nexTricky==maxTricky){ nexTricky=0; }else{ nexTricky++; }
+
+
 
   if(posicion>=nextRepeat){
 
@@ -1602,7 +1632,7 @@ if(_ww<=1000){
 
 }
 
-$("#velocityFlash").val("200");
+$("#velocityFlash").val("400");
 calcularTiempo();
 
 </script>
