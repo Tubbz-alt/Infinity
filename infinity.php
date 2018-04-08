@@ -457,7 +457,8 @@ copyTextareaBtn.addEventListener('click', function(event) {
     <option value="6">6s</option>
 </select>
 <select id="tricky">
-    <option value="0" selected>no tricky</option>
+    <option value="-1"  selected>no tricky</option>
+    <option value="0">long words</option>
     <option value="12">12%</option>
     <option value="25">25%</option>
     <option value="37">37%</option>
@@ -566,6 +567,8 @@ function getRandomColor() {
 
 bRc=0;
 
+// console.log(n("tricky"))
+
 function n(x){ return parseInt($("#"+x).val()); }
 
 var bPlay=0;
@@ -627,6 +630,7 @@ var kill6;
 var strToCopy="";
 var cadenaBak=[],cadenaBak1=[];
 var cantidadBak=0,cantidadBak1=0;
+bTricky=0;
 
 
 function init(x){
@@ -640,7 +644,11 @@ function init(x){
 
     maxTricky=0; nexTricky=0;
 
+
+
     str = $("#input1").val();
+
+    bTricky=0;
 
 
     limpia = str.split("\n").join(" ");
@@ -689,7 +697,7 @@ function init(x){
     cadenaBak1=_.extend(cadena2);
     cantidadBak1=cadena2.length;
 
-    if(wordsByFlash==1){
+    if(wordsByFlash==1 && n("tricky")==-1){
       cadena=_.extend(cadena2);
       cantidad=cadena.length;
 
@@ -1307,16 +1315,21 @@ function init(x){
   }
   
   //tricky experiment :)
-  if(_.random(1,100)<=n("tricky") && posicion-2>=0 && nexTricky==0 || ( word_length>=8 && posicion-2>=0 && nexTricky==0 ) ){
+  //if(  ( word_length>=8 && posicion-2>=0 && nexTricky==0 && wordsByFlash==1 ) ){
+  if( (_.random(1,100)<=n("tricky") && n("tricky")>=0 && posicion-2>=0 && nexTricky==0 ) || ( n("tricky")>=0 && word_length>=8 && posicion-2>=0 && nexTricky==0 && wordsByFlash==1 ) ){
+  // if( ( word_length>=8 && posicion-2>=0 && nexTricky==0 && wordsByFlash==1 ) ){
     nexTricky=0;
+    bTricky=1;
     //if(word_length>=8)
+    console.log("tricky"+word_length)
     if(_.random(0,1)){ maxTricky=2; posicion-=wordsByFlash; }else{ maxTricky=3; posicion-=wordsByFlash*2; }
+    
   }else{
 
     posicion+=wordsByFlash;
   }
 
-  if(nexTricky==maxTricky){ nexTricky=0; }else{ nexTricky++; }
+  if(nexTricky==maxTricky){ bTricky=0; nexTricky=0; }else{ if(bTricky) nexTricky++; }
 
 
 
@@ -1632,7 +1645,7 @@ if(_ww<=1000){
 
 }
 
-$("#velocityFlash").val("400");
+$("#velocityFlash").val("200");
 calcularTiempo();
 
 </script>
