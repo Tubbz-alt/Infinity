@@ -163,6 +163,27 @@ mysql_close($e);
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
       }
+
+      .split-color{
+  
+   background: linear-gradient(to right, green, green 50%, red 50%, red);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+   .split-color2{
+  
+   background: linear-gradient(to right, red, red 50%, green 50%, green);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+  }
+
+  /*  .split-color{
+   /*font-size: 100px;*/
+   background: linear-gradient(to right,  red, green, blue);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}*/
   </style>
 </head>
 <body>
@@ -307,11 +328,12 @@ Harry atravesó a oscuras la habitación, pasando junto a la gran jaula vacía d
 <!--<input  type="button" value="cw" onclick="bCW=!bCW;">-->
 <!-- <input type="button" value="rc" onclick="if(bColors==0){ bColors=1; } bRc=!bRc; clearTimeout(killIntervalRc);"> -->
 <select onchange="cambiarColores(this.value);" id="colors-select" style="width: 65px;">
-  <option value="1" selected>Green</option>
+  <option value="1">Green</option>
   <option value="2">Blue</option>
   <option value="3">Gray</option>
   <option value="4">Color Alphabet</option>
   <option value="5">Random colors</option>
+  <option value="6" selected>Dual</option>
 </select>
 <select onchange="cambiarTransformation(this.value);" id="transform-select" style="width: 90px; display:none;">
   <option value="1">noTransform</option>
@@ -438,17 +460,25 @@ copyTextareaBtn.addEventListener('click', function(event) {
     <option value="9">9</option>
     <option value="10">10</option>
     <option value="11">11</option>
-    <option value="12" selected>12</option>
+    <option value="12">12</option>
     <option value="13">13</option>
     <option value="14">14</option>
-    <option value="15">15</option>
+    <option value="15" selected>15</option>
     <option value="16">16</option>
     <option value="17">17</option>
 </select>
 <select id="working-memory" style="/*width: 75px;*/" onchange="/*calcularTiempo();*/">   
-    <option value="0" selected>not</option>
+    <option value="0" selected>not pause</option>
     <option value="0.5">0.5</option>
+    <option value="0.6">0.6</option>
+    <option value="0.7">0.7</option>
+    <option value="0.8">0.8</option>
+    <option value="0.9">0.9</option>
     <option value="1">1s</option>
+    <option value="1.1">1.1s</option>
+    <option value="1.2">1.2s</option>
+    <option value="1.3">1.3s</option>
+    <option value="1.4">1.4s</option>
     <option value="1.5">1.5s</option>
     <option value="2">2s</option>
     <option value="3">3s</option>
@@ -456,15 +486,88 @@ copyTextareaBtn.addEventListener('click', function(event) {
     <option value="5">5s</option>
     <option value="6">6s</option>
 </select>
-<select id="tricky">
+<select id="tricky" style="display:none;">
     <option value="-1"  selected>no tricky</option>
     <option value="0">long words</option>
+    <option value="7">7%</option>
     <option value="12">12%</option>
     <option value="25">25%</option>
     <option value="37">37%</option>
     <option value="50">50%</option>
 </select>
-zoom 
+<select id="infinityIncrement" style="">
+    <option value="0">i0</option>
+    <option value="0.12">i0.12</option>
+    <option value="0.25">i0.25</option>
+    <option value="0.5">i0.5</option>
+    <option value="0.75">i0.75</option>
+    <option value="1" selected>i1</option>
+    <option value="1.25">i1.25</option>
+    <option value="1.5">i.15</option>
+</select>
+<select id="reduceVelocityWhen" style="width: 75px;" onchange="calcularTiempo();">   
+    <option value="50">50wpm</option>
+    <option value="75">75wpm</option>
+    <option value="100">100wpm</option>
+    <option value="105">105wpm</option>
+    <option value="110">110wpm</option>
+    <option value="115">115wpm</option>
+    <option value="120">120wpm</option>
+    <option value="125">125wpm</option> 
+    <option value="130">130wpm</option> 
+    <option value="135">135wpm</option> 
+    <option value="140">140wpm</option> 
+    <option value="145">145wpm</option> 
+    <option value="150">150wpm</option>
+    <option value="175">175wpm</option>
+    <option value="180">180wpm</option>
+    <option value="185">185wpm</option>
+    <option value="190">190wpm</option>
+    <option value="195">195wpm</option>
+    <option value="200">200wpm</option>
+     <option value="205">205wpm</option>
+    <option value="210">210wpm</option>
+    <option value="215">215wpm</option>
+    <option value="220">220wpm</option>
+    <option value="225">225wpm</option>
+     <option value="230">230wpm</option>
+    <option value="235">235wpm</option>
+    <option value="240">240wpm</option>
+    <option value="245">245wpm</option>
+    <option value="250">250wpm</option>
+    <option value="275">275wpm</option>
+    <option value="300" selected>300wpm</option>
+    <option value="325">325wpm</option>
+    <option value="350">350wpm</option>
+    <option value="375">375wpm</option>
+    <option value="400">400wpm</option>
+    <option value="425">425wpm</option>
+    <option value="450">450wpm</option>
+    <option value="475">475wpm</option>
+    <option value="500">500wpm</option>
+    <option value="525">525wpm</option>
+    <option value="550">550wpm</option>
+    <option value="575">575wpm</option>
+    <option value="600">600wpm</option>
+    <option value="625">625wpm</option>
+    <option value="650">650wpm</option>
+    <option value="675">675wpm</option>
+    <option value="700">725wpm</option>
+    <option value="725">700wpm</option>
+    <option value="750">750wpm</option>
+    <option value="775">775wpm</option>
+    <option value="800">800wpm</option>
+    <option value="825">825wpm</option>
+    <option value="850">850wpm</option>
+    <option value="875">875wpm</option>
+    <option value="900">900wpm</option>
+    <option value="925">925wpm</option>
+    <option value="950">950wpm</option>
+    <option value="975">975wpm</option>
+    <option value="1000">1000wpm</option>
+    <option value="1100">1100wpm</option>
+    <option value="1200">1200wpm</option>
+  </select>
 <input type="button" value="-" onclick="/*myZoom-=0.1; $('#center-screen').css('zoom',''+myZoom);*/ fontSize-=5; /*$('#center-screen').css('font-size',''+myFontSize+'px');*/">
 <input type="button" value="+" onclick="/*myZoom+=0.1; $('#center-screen').css('zoom',''+myZoom);*/  fontSize+=5; /*$('#center-screen').css('font-size',''+myFontSize+'px !important');*/">
 <input  type="button" value="?" onclick="alert('Infinity:A evolution of Speed-reading Apps\nBased on the Shapes and colors Speed-Memory System\nLicence: GNU General Public License v3.0\nSource: https://github.com/vernetit/Infinity\ncontact: robertchalean@gmail.com');">
@@ -570,6 +673,8 @@ bRc=0;
 // console.log(n("tricky"))
 
 function n(x){ return parseInt($("#"+x).val()); }
+function _f(x){ return parseFloat($("#"+x).val()); }
+
 
 var bPlay=0;
 var wordsByFlash=1;
@@ -612,7 +717,7 @@ tiempo = 0;
 lugar = "";
 mostrar="";
 
-nexTricky=0; maxTricky=0;
+nextTricky=0; maxTricky=0;
 
 var killIntervalRc;
 
@@ -631,7 +736,11 @@ var strToCopy="";
 var cadenaBak=[],cadenaBak1=[];
 var cantidadBak=0,cantidadBak1=0;
 bTricky=0;
+infinityIncrement=0;
+infinityPlus=0;
+reduceVelocityWhen=0;
 
+bDualSide=0;
 
 function init(x){
 
@@ -642,9 +751,10 @@ function init(x){
     repeatWW=n("repeat-w");
     myDb=n("database");
 
-    maxTricky=0; nexTricky=0;
+   
+    infinityPlus=0; 
 
-
+    maxTricky=0; nextTricky=0;
 
     str = $("#input1").val();
 
@@ -680,7 +790,7 @@ function init(x){
       for(i=0;i<cantidad;i++){
         str=cadena[i];
 
-        if(str.length>=12){
+        if(str.length>=11){
           middle = Math.ceil(str.length / 2);
           s1 = str.slice(0, middle);
           s2 = str.slice(middle);
@@ -775,6 +885,9 @@ function init(x){
 
 
   }//end iniciar
+
+   reduceVelocityWhen=_f("reduceVelocityWhen")
+  infinityIncrement=_f("infinityIncrement")
 
 
   clearTimeout(killIntervalRc);
@@ -1114,10 +1227,7 @@ function init(x){
       //$("#right-screen").html("");
       transform="transform:skewY(-30deg);"
 
-    }
-    
-    
-          
+    }          
   }
 
   if(myTransformation==5){
@@ -1214,12 +1324,20 @@ function init(x){
         }else{
           poneme += `<span style="color: ${abc1[mostrar[i]]}; text-shadow: 1px 1px gray;  font-size: ${fontSize}px;">${mostrar[i]}</span>`;
 
-        }
-
-        
+        }   
       }
 
-      $("#"+lugar).html(`${emo}<div style="${transform}">`+poneme+"</div>");
+      if(getParameter("exp")=="66"){
+
+        middle = Math.ceil(poneme.length / 2);
+        s1 = str.slice(0, middle);
+        s2 = str.slice(middle);
+
+        $("#"+lugar).html(`${emo}<div style="${transform}"><span style="color:green">${s1}</span><span style="color:red">${s2}</span></div>`);   
+      }else{
+         $("#"+lugar).html(`${emo}<div style="${transform}">`+poneme+"</div>");   
+      }
+     
 
 
     }
@@ -1283,7 +1401,28 @@ function init(x){
 
       $("#center-screen").css("color",currentColor)
 
-      $("#"+lugar).html(`<div style="${transform}">${ocul}<span style="font-size: ${fontSize}px;">`+mostrar+`</span></div>`);
+
+      // console.log(getParameter("exp"))
+      if(bDual){
+        /*
+        middle = Math.ceil(mostrar.length / 2);
+        s1 = mostrar.slice(0, middle);
+
+
+        s2 = mostrar.slice(middle);*/
+
+        myDualClass="split-color"
+        bDualSide=!bDualSide
+        if(bDualSide) myDualClass="split-color2"
+
+        $("#"+lugar).html(`<div style="${transform}">${ocul}<span class="${myDualClass}" style="font-size: ${fontSize}px;">`+mostrar+`</span></div>`); 
+        
+        //$("#"+lugar).html(`${emo}<div style="${transform}"><span style="color:green; font-size: ${fontSize}px;">${s1}</span><span style="color:red; font-size: ${fontSize}px;">${s2}</span></div>`);   
+      }else{
+        $("#"+lugar).html(`<div style="${transform}">${ocul}<span style="font-size: ${fontSize}px;">`+mostrar+`</span></div>`);  
+      }
+
+      
 
       if(bPalabrasLargasColor && word_length>=10 && wordsByFlash==1) $("#center-screen").css("color","#1fef6b")
 
@@ -1296,7 +1435,6 @@ function init(x){
     }//else myExperiment
     txtLength=mostrar.length;
     
-
     /*
 
     var Hello = React.createClass({
@@ -1315,21 +1453,37 @@ function init(x){
   }
   
   //tricky experiment :)
-  //if(  ( word_length>=8 && posicion-2>=0 && nexTricky==0 && wordsByFlash==1 ) ){
-  if( (_.random(1,100)<=n("tricky") && n("tricky")>=0 && posicion-2>=0 && nexTricky==0 ) || ( n("tricky")>=0 && word_length>=8 && posicion-2>=0 && nexTricky==0 && wordsByFlash==1 ) ){
-  // if( ( word_length>=8 && posicion-2>=0 && nexTricky==0 && wordsByFlash==1 ) ){
-    nexTricky=0;
+  //if(  ( word_length>=8 && posicion-2>=0 && nextTricky==0 && wordsByFlash==1 ) ){
+  if( _.random(1,100)<=n("tricky") && n("tricky")>=0 && posicion-3>=0 && nextTricky==0  ){
+  // if( ( word_length>=8 && posicion-2>=0 && nextTricky==0 && wordsByFlash==1 ) ){
+    // nextTricky=0;
+    // bTricky=1;
+    // console.log("tricky"+word_length)
+    // if(_.random(0,1)){ maxTricky=2; posicion-=wordsByFlash; }else{ maxTricky=3; posicion-=wordsByFlash*2; }
+
+    nextTricky=0;
     bTricky=1;
-    //if(word_length>=8)
     console.log("tricky"+word_length)
-    if(_.random(0,1)){ maxTricky=2; posicion-=wordsByFlash; }else{ maxTricky=3; posicion-=wordsByFlash*2; }
+    for(;;){ myRetroceso=_.random(1,3); if(posicion-myRetroceso>=0){ break; } } 
+    maxTricky=myRetroceso+1; posicion-=wordsByFlash*myRetroceso;
+
+    // if(_.random(0,1)){ maxTricky=2; posicion-=wordsByFlash; }else{ maxTricky=3; posicion-=wordsByFlash*2; }
     
   }else{
+
+    if( n("tricky")>=0 && word_length>=8 && posicion-3>=0 && nextTricky==0 && wordsByFlash==1  ){
+
+      nextTricky=0;
+      bTricky=1;
+      console.log("tricky"+word_length)
+      for(;;){ myRetroceso=_.random(1,3); if(posicion-myRetroceso>=0){ break; } } 
+      maxTricky=myRetroceso+1; posicion-=wordsByFlash*myRetroceso;
+    }
 
     posicion+=wordsByFlash;
   }
 
-  if(nexTricky==maxTricky){ bTricky=0; nexTricky=0; }else{ if(bTricky) nexTricky++; }
+  if(nextTricky==maxTricky){ bTricky=0; nextTricky=0; }else{ if(bTricky) nextTricky++; }
 
 
 
@@ -1373,7 +1527,7 @@ function init(x){
 
   velocity=n("velocityFlash");
 
-    _n=velocity;
+    _n=velocity+infinityPlus;
 
     if(contadorPalabras>=3)
       _n = _n + _n * 0.2;
@@ -1386,16 +1540,31 @@ function init(x){
 
     velocity=_n;
 
-    $("#current-vel").html(parseInt(_n));
+    $("#current-vel").html(parseFloat(_n+infinityPlus).toFixed(2));
 
   plus=0;
 
-  if(contadorPalabras==n("my-limit")-1 && n("working-memory")!=0){
+  if(contadorPalabras==n("my-limit")-1 && _f("working-memory")!=0){
     
-    plus = n("working-memory") * 1000 - ( ( 60000/ velocity ) * wordsByFlash  );
+    plus = _f("working-memory") * 1000 - ( ( 60000/ velocity ) * wordsByFlash  );
+    
+
+    console.log(plus)
     setTimeout(function(){ bMostrarRndColor=0; $("#center-screen").html(""); },  ( 60000/ velocity ) * wordsByFlash  );
 
     
+  }
+
+  if(contadorPalabras==n("my-limit")-1){
+    
+    multiplicador=1;
+    if( (velocity)>=reduceVelocityWhen ) multiplicador=0.5;
+
+
+    infinityPlus+=(infinityIncrement*multiplicador);
+
+
+    console.log(infinityPlus+ " <- " + infinityIncrement )
   }
 
   if( ( word_length>=3 && my_word.search("-")==-1 ) || wordsByFlash>1 || (n("working-memory")>0 && contadorPalabras==n("my-limit")-1 ) ) contadorPalabras++; 
@@ -1408,7 +1577,7 @@ function init(x){
     }
   } 
 
-  killInterval=setTimeout(function(){ init() },  ( 60000/ velocity ) * wordsByFlash + plus  );
+  killInterval=setTimeout(function(){ init() },  ( 60000/ velocity ) * ( wordsByFlash  ) + plus  );
 
   calcularTiempo();
 
@@ -1583,13 +1752,16 @@ ReactDOM.render(
 */
 
 currentColor="green";
+bDual=0;
 
 function cambiarColores(x){
+  bDual=0;
   if(x==1){ bColors=0; currentColor="green";  }
   if(x==2){ bColors=0; currentColor="blue"; }
   if(x==3){ bColors=0; currentColor="gray"; }
   if(x==4){ bColors=1; bRc=0; }
   if(x==5){ if(bColors==0){ bColors=1; } bRc=1; clearTimeout(killIntervalRc); }
+  if(x==6) bDual=1;
   $("body").css("color",currentColor);
 }
 
@@ -1597,18 +1769,11 @@ function cambiarColores(x){
 
 <? $vel=300; 
   if(isset($_GET["vel"])){ $vel=intval($_GET["vel"]); ?>
-
-
   $("#velocityFlash").val("<?=$vel?>");
-
   calcularTiempo();
-
-
-
 <? } ?>
 
 <?
-
 if(isset($_GET[exp])){
 
   if($_GET[exp]==8){  ?> $("#readingMode").val("6"); readingMode=n('readingMode'); init(); <? } 
@@ -1628,7 +1793,20 @@ function getRndTxt(){
     }});
 }
 
-cambiarColores(1);
+function getParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+cambiarColores(6);
 
 
 _ww=$(window).width();
@@ -1646,7 +1824,13 @@ if(_ww<=1000){
 }
 
 $("#velocityFlash").val("200");
+
 calcularTiempo();
+
+// $("#tricky").val("12")
+// $("#my-limit").val("15")
+
+//play()
 
 </script>
 
